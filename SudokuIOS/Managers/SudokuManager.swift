@@ -33,5 +33,14 @@ enum SudokuDifficulty: String {
 
 /// Class that will manage the sudoku.
 class SudokuManager: ObservableObject {
+    /// Two dementional array keeping the numbers.
+    @Published var numbers: [[SudokuNumber]]
+    /// Variable keeping the difficulty.
+    @Published var difficulty: SudokuDifficulty
     
+    /// Default initialser.
+    init() {
+        self.numbers = Array(repeating: Array(repeating: SudokuNumber(), count: 9), count: 9)
+        self.difficulty = .easy
+    }
 }
