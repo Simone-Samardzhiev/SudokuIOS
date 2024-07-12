@@ -24,6 +24,13 @@ struct SudokuNumber {
     }
 }
 
+/// Enumeration used to select the difficulty of the sudoku.
+enum SudokuDifficulty: String {
+    case easy
+    case normal
+    case hard
+}
+
 /// Class that will manage the sudoku.
 class SudokuManager: ObservableObject {
     
