@@ -107,6 +107,30 @@ class SudokuManager: ObservableObject {
         return false
     }
     
+    /// Method that will remove random nubers form the sudoku based on the difficulty.
+    private func removeNumbers() {
+        var count: Int
+        
+        switch difficulty {
+        case .easy:
+            count = 30
+        case .normal:
+            count = 40
+        case .hard:
+            count = 50
+        }
+        
+        while count > 0 {
+            let row = Int.random(in: 0..<9)
+            let col = Int.random(in: 0..<9)
+            
+            if numbers[row][col].value != nil {
+                numbers[row][col].value = nil
+                count -= 1
+            }
+        }
+    }
+    
     /// Method that will clear all the numbers.
     private func clearNumbers() {
         for i in 0..<9 {
