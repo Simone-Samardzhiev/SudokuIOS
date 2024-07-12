@@ -84,4 +84,26 @@ class SudokuManager: ObservableObject {
         
         return true
     }
+    
+    /// Method that will try to solve the sudoku.
+    /// - Returns: True if the sudoku is solvable otherwise false.
+    private func sole() -> Bool {
+        guard let (row, col) = findEmptyCell() else {
+            return true
+        }
+        
+        for num in [1, 2, 3, 4, 5, 6, 7, 8, 9].shuffled() {
+            if isSafe(row: row, col: col, value: num) {
+                numbers[row][col].value = num
+                
+                if sole() {
+                    return true
+                }
+                
+                numbers[row][col].value = nil
+            }
+        }
+        
+        return false
+    }
 }
