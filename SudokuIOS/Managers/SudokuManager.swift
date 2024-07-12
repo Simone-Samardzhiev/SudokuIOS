@@ -43,4 +43,18 @@ class SudokuManager: ObservableObject {
         self.numbers = Array(repeating: Array(repeating: SudokuNumber(), count: 9), count: 9)
         self.difficulty = .easy
     }
+    
+    /// Method that will find an empty cell.
+    /// - Returns: The coordinated of the empty cell in a tuple or nil if there is not an emoty cell.
+    private func findEmptyCell() -> (Int, Int)? {
+        for i in 0..<9 {
+            for j in 0..<9 {
+                if numbers[i][j].value == nil {
+                    return (i, j)
+                }
+            }
+        }
+        
+        return nil
+    }
 }
