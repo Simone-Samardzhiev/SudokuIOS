@@ -106,4 +106,15 @@ class SudokuManager: ObservableObject {
         
         return false
     }
+    
+    /// Method that will clear all the numbers.
+    private func clearNumbers() {
+        for i in 0..<9 {
+            for j in 0..<9 {
+                numbers[i][j].value = nil
+                numbers[i][j].isGenerated = true
+                numbers[i][j].isHighlighted = false
+            }
+        }
+    }
 }
