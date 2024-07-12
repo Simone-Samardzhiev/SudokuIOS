@@ -57,4 +57,31 @@ class SudokuManager: ObservableObject {
         
         return nil
     }
+    
+    /// Method that will check if a value can be place in a cell.
+    /// - Parameters:
+    ///   - row: The row of the cell.
+    ///   - col: The column of the cell.
+    ///   - value: The value that has to be placed.
+    /// - Returns: True if the number can be placed otherwise false.
+    private func isSafe(row: Int, col: Int, value: Int) -> Bool {
+        for i in 0..<9 {
+            if numbers[row][i].value == value || numbers[col][i].value == value {
+                return false
+            }
+        }
+        
+        let x = row - row % 3
+        let y = col - col % 3
+        
+        for i in 0..<3 {
+            for j in 0..<3 {
+                if numbers[i + x][j + y].value == value {
+                    return false
+                }
+            }
+        }
+        
+        return true
+    }
 }
