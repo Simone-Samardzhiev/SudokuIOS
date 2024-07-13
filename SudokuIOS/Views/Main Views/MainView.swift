@@ -16,7 +16,7 @@ struct MainView: View {
         GeometryReader { geo in
             NavigationStack {
                 VStack {
-                
+                    DifficultyPicker()
                 }
                 .navigationTitle("Sudoku")
                 .environmentObject(sudokuManager)
