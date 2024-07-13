@@ -19,6 +19,9 @@ struct MainView: View {
                     DifficultyPicker()
                     
                     StartButton()
+                        .navigationDestination(isPresented: $sudokuManager.gameStarted) {
+                            SudokuView()
+                        }
                 }
                 .navigationTitle("Sudoku")
                 .environmentObject(sudokuManager)
