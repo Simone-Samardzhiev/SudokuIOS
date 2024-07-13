@@ -18,10 +18,7 @@ struct MainView: View {
                 VStack {
                     DifficultyPicker()
                     
-                    StartButton(
-                        width: geo.size.width / 3,
-                        height: geo.size.height / 10
-                    )
+                    StartButton()
                 }
                 .navigationTitle("Sudoku")
                 .environmentObject(sudokuManager)
