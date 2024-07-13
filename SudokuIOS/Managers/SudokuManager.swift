@@ -68,7 +68,7 @@ class SudokuManager: ObservableObject {
     /// - Returns: True if the number can be placed otherwise false.
     private func isSafe(row: Int, col: Int, value: Int) -> Bool {
         for i in 0..<9 {
-            if numbers[row][i].value == value || numbers[col][i].value == value {
+            if numbers[row][i].value == value || numbers[i][col].value == value {
                 return false
             }
         }
