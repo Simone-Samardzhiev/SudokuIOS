@@ -37,6 +37,8 @@ class SudokuManager: ObservableObject {
     @Published var numbers: [[SudokuNumber]]
     /// Variable keeping the difficulty.
     @Published var difficulty: SudokuDifficulty
+    /// Bool variable respresenting if the game is started ot not.
+    @Published var gameStarted: Bool
     
     /// Default initialser.
     init() {
@@ -140,5 +142,13 @@ class SudokuManager: ObservableObject {
                 numbers[i][j].isHighlighted = false
             }
         }
+    }
+    
+    /// Method that will start the game.
+    func startGame() {
+        // The result is not used, bacause the sudoku is empty so it can always be solved.
+        _ = sole()
+        clearNumbers()
+        gameStarted = true
     }
 }
