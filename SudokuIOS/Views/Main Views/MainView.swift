@@ -7,9 +7,21 @@
 
 import SwiftUI
 
+/// The main view of the sudoku.
 struct MainView: View {
+    /// The manager of the sudoku.
+    @StateObject var sudokuManager = SudokuManager()
+    
     var body: some View {
-        Text("Hello, World!")
+        GeometryReader { geo in
+            NavigationStack {
+                VStack {
+                
+                }
+                .navigationTitle("Sudoku")
+                .environmentObject(sudokuManager)
+            }
+        }
     }
 }
 
