@@ -44,10 +44,11 @@ class SudokuManager: ObservableObject {
     init() {
         self.numbers = Array(repeating: Array(repeating: SudokuNumber(), count: 9), count: 9)
         self.difficulty = .easy
+        self.gameStarted = false
     }
     
     /// Method that will find an empty cell.
-    /// - Returns: The coordinated of the empty cell in a tuple or nil if there is not an emoty cell.
+    /// - Returns: The coordinates of the empty cell in a tuple or nil if there is not an empty cell.
     private func findEmptyCell() -> (Int, Int)? {
         for i in 0..<9 {
             for j in 0..<9 {
@@ -60,7 +61,7 @@ class SudokuManager: ObservableObject {
         return nil
     }
     
-    /// Method that will check if a value can be place in a cell.
+    /// Method that will check if a value can be placed in a cell.
     /// - Parameters:
     ///   - row: The row of the cell.
     ///   - col: The column of the cell.
@@ -89,7 +90,7 @@ class SudokuManager: ObservableObject {
     
     /// Method that will try to solve the sudoku.
     /// - Returns: True if the sudoku is solvable otherwise false.
-    private func sole() -> Bool {
+    private func solve() -> Bool {
         guard let (row, col) = findEmptyCell() else {
             return true
         }
@@ -98,7 +99,7 @@ class SudokuManager: ObservableObject {
             if isSafe(row: row, col: col, value: num) {
                 numbers[row][col].value = num
                 
-                if sole() {
+                if solve() {
                     return true
                 }
                 
@@ -109,7 +110,7 @@ class SudokuManager: ObservableObject {
         return false
     }
     
-    /// Method that will remove random nubers form the sudoku based on the difficulty.
+    /// Method that will remove random numbers form the sudoku based on the difficulty.
     private func removeNumbers() {
         var count: Int
         
@@ -147,7 +148,7 @@ class SudokuManager: ObservableObject {
     /// Method that will start the game.
     func startGame() {
         // The result is not used, bacause the sudoku is empty so it can always be solved.
-        _ = sole()
+        _ = solve()
         clearNumbers()
         gameStarted = true
     }

@@ -28,9 +28,14 @@ struct StartButton: View {
     
     var body: some View {
         Button {
-            
+            sudokuManager.startGame()
         } label: {
-            
+            RoundedRectangle(cornerRadius: 20)
+                .frame(width: width, height: height)
+                .overlay(alignment: .center) {
+                    Text("Start game")
+                        .foregroundStyle(Color.primary)
+                }
         }
 
     }
