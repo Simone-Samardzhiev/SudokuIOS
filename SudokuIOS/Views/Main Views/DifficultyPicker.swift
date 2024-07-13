@@ -13,7 +13,6 @@ struct DifficultyPicker: View {
     @EnvironmentObject var sudokuManager: SudokuManager
     
     var body: some View {
-        
         Picker("Pick difficulty", selection: $sudokuManager.difficulty) {
             Text(SudokuDifficulty.easy.rawValue)
                 .tag(SudokuDifficulty.easy)
