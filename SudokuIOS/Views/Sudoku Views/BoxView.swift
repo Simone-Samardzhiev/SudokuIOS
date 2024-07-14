@@ -29,5 +29,19 @@ struct BoxView: View {
     var body: some View {
         Rectangle()
             .stroke(Color.primary, lineWidth: 3)
+            .overlay(alignment: .center) {
+                VStack(spacing: 0) {
+                    ForEach(0..<3) { i in
+                        HStack(spacing: 0) {
+                            ForEach(0..<3) { j in
+                                CellView(
+                                    x: x * 3 + i,
+                                    y: y * 3 + j
+                                )
+                            }
+                        }
+                    }
+                }
+            }
     }
 }
