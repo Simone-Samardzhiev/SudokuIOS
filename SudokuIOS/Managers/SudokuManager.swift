@@ -52,11 +52,11 @@ class SudokuManager: ObservableObject {
     
     /// Method that will find an empty cell.
     /// - Returns: The coordinates of the empty cell in a tuple or nil if there is not an empty cell.
-    private func findEmptyCell() -> (Int, Int)? {
+    private func findEmptyCell() -> Coordinates? {
         for i in 0..<9 {
             for j in 0..<9 {
                 if numbers[i][j].value == nil {
-                    return (i, j)
+                    return Coordinates(row: i, col: j)
                 }
             }
         }
@@ -66,19 +66,18 @@ class SudokuManager: ObservableObject {
     
     /// Method that will check if a value can be placed in a cell.
     /// - Parameters:
-    ///   - row: The row of the cell.
-    ///   - col: The column of the cell.
+    ///   - coordinates: The coordinates of the cell.
     ///   - value: The value that has to be placed.
     /// - Returns: True if the number can be placed otherwise false.
-    private func isSafe(row: Int, col: Int, value: Int) -> Bool {
+    private func isSafe(coordinates: Coordinates, value: Int) -> Bool {
         for i in 0..<9 {
-            if numbers[row][i].value == value || numbers[i][col].value == value {
+            if numbers[coordinates.row][i].value == value || numbers[i][coordinates.row].value == value {
                 return false
             }
         }
         
-        let x = row - row % 3
-        let y = col - col % 3
+        let x = coordinates.row - coordinates.row % 3
+        let y = coordinates.col - coordinates.col % 3
         
         for i in 0..<3 {
             for j in 0..<3 {
@@ -94,19 +93,19 @@ class SudokuManager: ObservableObject {
     /// Method that will try to solve the sudoku.
     /// - Returns: True if the sudoku is solvable otherwise false.
     private func solve() -> Bool {
-        guard let (row, col) = findEmptyCell() else {
+        guard let coordinates = findEmptyCell() else {
             return true
         }
         
         for num in [1, 2, 3, 4, 5, 6, 7, 8, 9].shuffled() {
-            if isSafe(row: row, col: col, value: num) {
-                numbers[row][col].value = num
+            if isSafe(coordinates: coordinates, value: num) {
+                numbers[coordinates.row][coordinates.col].value = num
                 
                 if solve() {
                     return true
                 }
                 
-                numbers[row][col].value = nil
+                numbers[coordinates.row][coordinates.col].value = nil
             }
         }
         
@@ -127,11 +126,10 @@ class SudokuManager: ObservableObject {
         }
         
         while count > 0 {
-            let row = Int.random(in: 0..<9)
-            let col = Int.random(in: 0..<9)
+            let coordinates = Coordinates.generateRandomCoordinates(range: 0..<9)
             
-            if numbers[row][col].value != nil {
-                numbers[row][col].value = nil
+            if numbers[coordinates.row][coordinates.col].value != nil {
+                numbers[coordinates.row][coordinates.col].value = nil
                 count -= 1
             }
         }

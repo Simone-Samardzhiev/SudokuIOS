@@ -31,8 +31,7 @@ struct BoardView: View {
                         HStack(spacing: 0) {
                             ForEach(0..<3) { j in
                                 BoxView(
-                                    x: i,
-                                    y: j
+                                    coordinates: Coordinates(row: i, col: j)
                                 )
                             }
                         }

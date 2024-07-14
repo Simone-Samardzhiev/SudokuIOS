@@ -12,18 +12,13 @@ import SwiftUI
 struct CellView: View {
     /// The manager of the sudoku.
     @EnvironmentObject var sudokuManager: SudokuManager
-    /// The x coordinate of the cell.
-    let x: Int
-    /// The y coordinate of the cell.
-    let y: Int
+    /// The coordinates of the cell.
+    let coordinates: Coordinates
     
     /// Initializer of the cell view.
-    /// - Parameters:
-    ///   - x: The x coordinate of the cell.
-    ///   - y: The y coordinate of the cell.
-    init(x: Int, y: Int) {
-        self.x = x
-        self.y = y
+    /// - Parameter coordinates: The coordinates of the cell.
+    init(coordinates: Coordinates) {
+        self.coordinates = coordinates
     }
     
     var body: some View {
@@ -33,10 +28,14 @@ struct CellView: View {
             Rectangle()
                 .stroke(Color.gray, lineWidth: 1)
                 .overlay(alignment: .center) {
-                    if let num = sudokuManager.numbers[x][y].value {
+                    if let num = sudokuManager.numbers[coordinates.row][coordinates.col].value {
                         Text(String(num))
-                            .foregroundStyle(sudokuManager.numbers[x][y].isGenerated ? Color.generatedNumber : Color.blue )
-                            .bold(sudokuManager.numbers[x][y].isGenerated)
+                            .foregroundStyle(
+                                sudokuManager.numbers[coordinates.row][coordinates.col].isGenerated ? Color.generatedNumber : Color.blue
+                            )
+                            .bold(
+                                sudokuManager.numbers[coordinates.row][coordinates.col].isGenerated
+                            )
                     }
                 }
         }

@@ -12,18 +12,13 @@ import SwiftUI
 struct BoxView: View {
     /// The manager of the sudoku.
     @EnvironmentObject var sudokuManager: SudokuManager
-    /// The x coordinate of the box.
-    let x: Int
-    /// The y coordinate of the box.
-    let y: Int
+    /// The coordinates of the box.
+    let coordinates: Coordinates
     
     /// Initializer of the box view.
-    /// - Parameters:
-    ///   - x: The x coordinate of the box.
-    ///   - y: Тhe y coordinate of the box.
-    init(x: Int, y: Int) {
-        self.x = x
-        self.y = y
+    /// - Parameter coordinates: The coordinates of the box.
+    init(coordinates: Coordinates) {
+        self.coordinates = coordinates
     }
     
     var body: some View {
@@ -35,8 +30,10 @@ struct BoxView: View {
                         HStack(spacing: 0) {
                             ForEach(0..<3) { j in
                                 CellView(
-                                    x: x * 3 + i,
-                                    y: y * 3 + j
+                                    coordinates: Coordinates(
+                                        row: coordinates.row * 3 + i,
+                                        col: coordinates.col * 3 + j
+                                    )
                                 )
                             }
                         }
