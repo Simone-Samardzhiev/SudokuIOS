@@ -202,5 +202,31 @@ class SudokuManager: ObservableObject {
             
             return nil
         }
+        
+        /// Method that will check if a value can be placed in a cell.
+        /// - Parameters:
+        ///   - coordinates: The coordinates of the cell.
+        ///   - value: The value that has to be placed.
+        /// - Returns: True if the number can be placed otherwise false.
+        private func isSafe(coordinates: Coordinates, value: Int) -> Bool {
+            for i in 0..<9 {
+                if sudokuToCheck[coordinates.row][i] == value || sudokuToCheck[i][coordinates.col] == value {
+                    return false
+                }
+            }
+            
+            let x = coordinates.row - coordinates.row % 3
+            let y = coordinates.col - coordinates.col % 3
+            
+            for i in 0..<3 {
+                for j in 0..<3 {
+                    if sudokuToCheck[x + i][y + j] == value {
+                        return false
+                    }
+                }
+            }
+            
+            return true
+        }
     }
 }
