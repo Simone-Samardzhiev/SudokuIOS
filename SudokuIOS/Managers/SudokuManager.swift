@@ -191,11 +191,11 @@ class SudokuManager: ObservableObject {
         
         /// Method that will find an empty cell.
         /// - Returns: The coordinates of the empty cell in a tuple or nil if there is not an empty cell.
-        private func findEmptyCell() -> (Int, Int)? {
+        private func findEmptyCell() -> Coordinates? {
             for i in 0..<9 {
                 for j in 0..<9 {
                     if sudokuToCheck[i][j] == nil {
-                        return (i, j)
+                        Coordinates(row: i, col: j)
                     }
                 }
             }
