@@ -21,6 +21,7 @@ struct SudokuView: View {
                 }
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
-        }
+            .navigationBarBackButtonHidden()
+        }   
     }
 }
