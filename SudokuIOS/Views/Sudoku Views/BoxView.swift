@@ -5,4 +5,29 @@
 //  Created by Simone Samardzhiev on 14.07.24.
 //
 
-import Foundation
+import SwiftUI
+
+
+/// View that will display each 9 sub grids in the board.
+struct BoxView: View {
+    /// The manager of the sudoku.
+    @EnvironmentObject var sudokuManager: SudokuManager
+    /// The x coordinate of the box.
+    let x: Int
+    /// The y coordinate of the box.
+    let y: Int
+    
+    /// Initialiser of the box view.
+    /// - Parameters:
+    ///   - x: The x coordinate of the box.
+    ///   - y: Тhe y coordinate of the box.
+    init(x: Int, y: Int) {
+        self.x = x
+        self.y = y
+    }
+    
+    var body: some View {
+        Rectangle()
+            .stroke(Color.primary, lineWidth: 3)
+    }
+}
