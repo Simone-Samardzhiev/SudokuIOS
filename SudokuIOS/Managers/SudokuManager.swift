@@ -130,6 +130,7 @@ class SudokuManager: ObservableObject {
             
             if numbers[coordinates.row][coordinates.col].value != nil {
                 numbers[coordinates.row][coordinates.col].value = nil
+                numbers[coordinates.row][coordinates.col].isGenerated = false
                 count -= 1
             }
         }
