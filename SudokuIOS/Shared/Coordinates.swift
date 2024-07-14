@@ -23,5 +23,13 @@ struct Coordinates {
         self.col = col
     }
     
-    
+    /// Method that will return a randomly generated coordinates.
+    /// - Parameter range: The range of the coordinates.
+    /// - Returns: The generated coordinates.
+    static func generateRandomCoordinates(range: Range<Int>) -> Coordinates {
+        let row = Int.random(in: range)
+        let col = Int.random(in: range)
+        
+        return Coordinates(row: row, col: col)
+    }
 }
