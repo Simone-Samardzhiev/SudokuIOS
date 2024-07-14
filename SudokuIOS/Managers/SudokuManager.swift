@@ -154,6 +154,7 @@ class SudokuManager: ObservableObject {
         gameStarted = true
     }
     
+    /// Method that will end the game.
     func endGame() {
         clearNumbers()
         gameStarted = false
@@ -177,7 +178,7 @@ class SudokuManager: ObservableObject {
     }
     
     /// Class that will check the sudoku each time a number is inputed.
-    class SudokuChecker {
+    private class SudokuChecker {
         /// Array keeping the sudoku that has to be checked.
         private var sudokuToCheck: [[Int?]]
         /// Singleton.
@@ -189,7 +190,7 @@ class SudokuManager: ObservableObject {
         }
         
         /// Method that will find an empty cell.
-        /// - Returns: The coordinates of the empty cell. If there aren't any the method will return nil.
+        /// - Returns: The coordinates of the empty cell in a tuple or nil if there is not an empty cell.
         private func findEmptyCell() -> (Int, Int)? {
             for i in 0..<9 {
                 for j in 0..<9 {
