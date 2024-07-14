@@ -250,5 +250,19 @@ class SudokuManager: ObservableObject {
             
             return false
         }
+        
+        func check(sudoku: [[SudokuNumber]]) -> Bool {
+            sudokuToCheck = []
+            
+            for row in sudoku {
+                var newRow: [Int?] = []
+                for sudokuNumber in row {
+                    newRow.append(sudokuNumber.value)
+                }
+                sudokuToCheck.append(newRow)
+            }
+            
+            return tryToSolve()
+        }
     }
 }
