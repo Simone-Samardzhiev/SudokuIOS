@@ -39,12 +39,15 @@ class SudokuManager: ObservableObject {
     @Published var difficulty: SudokuDifficulty
     /// Bool variable respresenting if the game is started ot not.
     @Published var gameStarted: Bool
+    /// Variable keeping the selected number.
+    @Published var selectedNumber: Int?
     
     /// Default initialser.
     init() {
         self.numbers = Array(repeating: Array(repeating: SudokuNumber(), count: 9), count: 9)
         self.difficulty = .easy
         self.gameStarted = false
+        self.selectedNumber = nil
     }
     
     /// Method that will find an empty cell.
