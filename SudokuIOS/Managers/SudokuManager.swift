@@ -152,4 +152,9 @@ class SudokuManager: ObservableObject {
         removeNumbers()
         gameStarted = true
     }
+    
+    func endGame() {
+        clearNumbers()
+        gameStarted = false
+    }
 }
