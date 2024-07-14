@@ -181,7 +181,9 @@ class SudokuManager: ObservableObject {
     /// Class that will check the sudoku each time a number is inputed.
     class SudokuChecker {
         /// Array keeping the sudoku that has to be checked.
-        var sudokuToCheck: [[Int?]]
+        private var sudokuToCheck: [[Int?]]
+        /// Singleton.
+        static let shared = SudokuChecker()
         
         /// Default initializer.
         init() {
