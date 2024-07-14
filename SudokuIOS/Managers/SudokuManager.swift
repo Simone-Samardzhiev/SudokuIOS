@@ -228,5 +228,27 @@ class SudokuManager: ObservableObject {
             
             return true
         }
+        
+        /// Method that will try to solve the sudoku.
+        /// - Returns: True if it can be solved otherwise false.
+        private func tryToSolve() -> Bool {
+            guard let coordinates = findEmptyCell() else {
+                return true
+            }
+            
+            for num in 1...9 {
+                if isSafe(coordinates: coordinates, value: num) {
+                    sudokuToCheck[coordinates.row][coordinates.col] = num
+                    
+                    if (tryToSolve()) {
+                        return true
+                    }
+                    
+                    sudokuToCheck[coordinates.row][coordinates.col] = nil
+                }
+            }
+            
+            return false
+        }
     }
 }
