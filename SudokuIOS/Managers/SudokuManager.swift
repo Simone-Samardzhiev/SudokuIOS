@@ -251,6 +251,9 @@ class SudokuManager: ObservableObject {
             return false
         }
         
+        /// Method that will check the sudoku.
+        /// - Parameter sudoku: The sudoku that will be checked.
+        /// - Returns: True if it can be solved otherwise false.
         func check(sudoku: [[SudokuNumber]]) -> Bool {
             sudokuToCheck = []
             
