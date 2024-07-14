@@ -15,6 +15,11 @@ struct SudokuView: View {
             VStack {
                 
             }
+            .toolbar {
+                ToolbarItem(placement: .topBarLeading) {
+                    BackButton()
+                }
+            }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
         }
     }
