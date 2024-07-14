@@ -25,7 +25,7 @@ struct BoardView: View {
         Rectangle()
             .stroke()
             .frame(width: size, height: size)
-            .overlay(alignment: .center) {
+            .background(alignment: .center) {
                 VStack(spacing: 0) {
                     ForEach(0..<3) { i in
                         HStack(spacing: 0) {

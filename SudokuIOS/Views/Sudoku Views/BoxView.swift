@@ -29,7 +29,7 @@ struct BoxView: View {
     var body: some View {
         Rectangle()
             .stroke(Color.primary, lineWidth: 3)
-            .overlay(alignment: .center) {
+            .background(alignment: .center) {
                 VStack(spacing: 0) {
                     ForEach(0..<3) { i in
                         HStack(spacing: 0) {
