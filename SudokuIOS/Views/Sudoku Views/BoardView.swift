@@ -15,7 +15,7 @@ struct BoardView: View {
     /// The size of the board.
     let size: CGFloat
     
-    /// Initialiser of the board view.
+    /// Initializer of the board view.
     /// - Parameter size: The size of the board.
     init(size: CGFloat) {
         self.size = size

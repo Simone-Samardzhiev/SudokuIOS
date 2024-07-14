@@ -17,7 +17,7 @@ struct BoxView: View {
     /// The y coordinate of the box.
     let y: Int
     
-    /// Initialiser of the box view.
+    /// Initializer of the box view.
     /// - Parameters:
     ///   - x: The x coordinate of the box.
     ///   - y: Тhe y coordinate of the box.

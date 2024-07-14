@@ -33,16 +33,16 @@ enum SudokuDifficulty: String {
 
 /// Class that will manage the sudoku.
 class SudokuManager: ObservableObject {
-    /// Two dementional array keeping the numbers.
+    /// Two demential array keeping the numbers.
     @Published var numbers: [[SudokuNumber]]
     /// Variable keeping the difficulty.
     @Published var difficulty: SudokuDifficulty
-    /// Bool variable respresenting if the game is started ot not.
+    /// Bool variable representing if the game is started or not.
     @Published var gameStarted: Bool
     /// Variable keeping the selected number.
     @Published var selectedNumber: Int?
     
-    /// Default initialser.
+    /// Default initializer.
     init() {
         self.numbers = Array(repeating: Array(repeating: SudokuNumber(), count: 9), count: 9)
         self.difficulty = .easy
@@ -150,7 +150,7 @@ class SudokuManager: ObservableObject {
     
     /// Method that will start the game.
     func startGame() {
-        // The result is not used, bacause the sudoku is empty so it can always be solved.
+        // The result is not used, because the sudoku is empty so it can always be solved.
         _ = solve()
         removeNumbers()
         gameStarted = true

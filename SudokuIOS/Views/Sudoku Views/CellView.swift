@@ -17,9 +17,9 @@ struct CellView: View {
     /// The y coordinate of the cell.
     let y: Int
     
-    /// Initialiser of the cell view.
+    /// Initializer of the cell view.
     /// - Parameters:
-    ///   - x: Teh x coordinate of the cell.
+    ///   - x: The x coordinate of the cell.
     ///   - y: The y coordinate of the cell.
     init(x: Int, y: Int) {
         self.x = x

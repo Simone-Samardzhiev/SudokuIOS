@@ -15,7 +15,7 @@ struct NumberSelectionView: View {
     /// The width of the number selection.
     let size: CGFloat
     
-    /// Initialiser of the number selection view.
+    /// Initializer of the number selection view.
     /// - Parameter size: The width of the number selection.
     init(size: CGFloat) {
         self.size = size
