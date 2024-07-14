@@ -23,6 +23,21 @@ struct BoardView: View {
     
     var body: some View {
         Rectangle()
+            .stroke()
             .frame(width: size, height: size)
+            .overlay(alignment: .center) {
+                VStack(spacing: 0) {
+                    ForEach(0..<3) { i in
+                        HStack(spacing: 0) {
+                            ForEach(0..<3) { j in
+                                BoxView(
+                                    x: i,
+                                    y: j
+                                )
+                            }
+                        }
+                    }
+                }
+            }
     }
 }
