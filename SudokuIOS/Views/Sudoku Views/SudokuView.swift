@@ -17,6 +17,8 @@ struct SudokuView: View {
         GeometryReader { geo in
             VStack {
                 BoardView(size: geo.size.width / 1.1)
+                
+                NumberSelectionView(size: geo.size.width)
             }
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
