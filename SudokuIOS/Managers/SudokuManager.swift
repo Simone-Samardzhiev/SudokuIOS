@@ -149,7 +149,7 @@ class SudokuManager: ObservableObject {
     func startGame() {
         // The result is not used, bacause the sudoku is empty so it can always be solved.
         _ = solve()
-        clearNumbers()
+        removeNumbers()
         gameStarted = true
     }
 }
