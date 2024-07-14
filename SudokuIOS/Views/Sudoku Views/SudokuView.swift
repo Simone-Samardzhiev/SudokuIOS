@@ -10,6 +10,9 @@ import SwiftUI
 
 /// Struct that will display the sudoku.
 struct SudokuView: View {
+    /// The manager of the sudoku.
+    @EnvironmentObject var sudokuManager: SudokuManager
+    
     var body: some View {
         GeometryReader { geo in
             VStack {
