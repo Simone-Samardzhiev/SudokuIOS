@@ -195,7 +195,7 @@ class SudokuManager: ObservableObject {
             for i in 0..<9 {
                 for j in 0..<9 {
                     if sudokuToCheck[i][j] == nil {
-                        Coordinates(row: i, col: j)
+                        return Coordinates(row: i, col: j)
                     }
                 }
             }
