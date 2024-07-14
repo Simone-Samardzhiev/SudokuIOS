@@ -159,5 +159,22 @@ class SudokuManager: ObservableObject {
     func endGame() {
         clearNumbers()
         gameStarted = false
+        selectedNumber = nil
+    }
+    
+    /// Method that will be called when a new number is selected.
+    /// - Parameter newNumber: The new selected number.
+    func onSelectedNumber(newNumber: Int) {
+        for i in 0..<9 {
+            for j in 0..<9 {
+                if numbers[i][j].value == newNumber {
+                    numbers[i][j].isHighlighted = true
+                } else {
+                    numbers[i][j].isHighlighted = false
+                }
+            }
+        }
+        
+        selectedNumber = newNumber
     }
 }
