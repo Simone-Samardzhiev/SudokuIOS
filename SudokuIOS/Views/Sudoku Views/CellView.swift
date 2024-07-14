@@ -35,6 +35,7 @@ struct CellView: View {
                 .overlay(alignment: .center) {
                     if let num = sudokuManager.numbers[x][y].value {
                         Text(String(num))
+                            .foregroundStyle(sudokuManager.numbers[x][y].isGenerated ? Color.generatedNumber : Color.inputedNumber )
                             .bold(sudokuManager.numbers[x][y].isGenerated)
                     }
                 }
