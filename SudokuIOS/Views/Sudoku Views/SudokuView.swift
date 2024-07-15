@@ -16,6 +16,8 @@ struct SudokuView: View {
     var body: some View {
         GeometryReader { geo in
             VStack {
+                MistakesCounterView()
+                
                 BoardView(size: geo.size.width / 1.1)
                 
                 NumberSelectionView(size: geo.size.width)
