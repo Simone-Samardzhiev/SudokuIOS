@@ -41,6 +41,10 @@ class SudokuManager: ObservableObject {
     @Published var gameStarted: Bool
     /// Variable keeping the selected number.
     @Published var selectedNumber: Int?
+    /// Variable keeping the count of the mistakes.
+    var mistakesCount: Int
+    /// Bool variable representing if an alert for wring number should be presented.
+    @Published var errorAlertPresent: Bool
     
     /// Default initializer.
     init() {
@@ -48,6 +52,8 @@ class SudokuManager: ObservableObject {
         self.difficulty = .easy
         self.gameStarted = false
         self.selectedNumber = nil
+        self.mistakesCount = 0
+        self.errorAlertPresent = false
     }
     
     /// Method that will find an empty cell.
@@ -153,6 +159,7 @@ class SudokuManager: ObservableObject {
         _ = solve()
         removeNumbers()
         gameStarted = true
+        mistakesCount = 3
     }
     
     /// Method that will end the game.
