@@ -27,6 +27,7 @@ struct CellView: View {
         } label: {
             Rectangle()
                 .stroke(Color.gray, lineWidth: 1)
+                .fill(sudokuManager.numbers[coordinates.row][coordinates.col].isHighlighted ? Color.highlightedNumber : Color.clear)
                 .overlay(alignment: .center) {
                     if let num = sudokuManager.numbers[coordinates.row][coordinates.col].value {
                         Text(String(num))
