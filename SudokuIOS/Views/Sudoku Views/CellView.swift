@@ -23,7 +23,7 @@ struct CellView: View {
     
     var body: some View {
         Button {
-            
+            sudokuManager.onCellClicked(coordinates: coordinates)
         } label: {
             Rectangle()
                 .stroke(Color.gray, lineWidth: 1)

@@ -281,4 +281,33 @@ class SudokuManager: ObservableObject {
             return tryToSolve()
         }
     }
+    
+    func onCellClicked(coordinates: Coordinates) {
+        if let selectedNumber {
+            if !numbers[coordinates.row][coordinates.col].isGenerated {
+                if !isSafe(coordinates: coordinates, value: selectedNumber) {
+                    errorAlertPresent = true
+                    mistakesCount -= 1
+                    return
+                }
+                
+                let previousValue = numbers[coordinates.row][coordinates.col].value
+                numbers[coordinates.row][coordinates.col].value = selectedNumber
+                
+                if !SudokuChecker.shared.check(sudoku: numbers) {
+                    errorAlertPresent = true
+                    mistakesCount -= 1
+                    numbers[coordinates.row][coordinates.col].value = previousValue
+                    return
+                }
+                
+                numbers[coordinates.row][coordinates.col].isHighlighted = true
+                remainingCellsCount -= 1
+                
+                if remainingCellsCount == 0 {
+                    endGame()
+                }
+            }
+        }
+    }
 }
