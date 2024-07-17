@@ -54,7 +54,7 @@ class SudokuManager: ObservableObject {
         self.difficulty = .easy
         self.gameStarted = false
         self.selectedNumber = nil
-        self.mistakesCount = 0
+        self.mistakesCount = 3
         self.remainingCellsCount = 0
         self.errorAlertPresent = false
     }
