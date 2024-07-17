@@ -27,9 +27,9 @@ that manages the view of the app and the generation of the sudoku.
 ### Group views
 The group is used to store each view of the app.
 
-#### The sub group main views contains the views that will be first
-rendered as the main screen of the app.
+#### The sub group main views
+It contains the views that will be first rendered as the main screen of the app.
 
-#### The sub group sudoku views contains the views that will be used
- to display the sudoku.
+#### The sub group sudoku 
+It views contains the views that will be used to display the sudoku.
 
