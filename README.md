@@ -14,3 +14,10 @@ The code is divided in 3 groups.
 3. Views
     3.1 Main Views
     3.2 Sudoku Views
+    
+### Group shared.
+The group is used to files that will be used by the whole project.
+In this case there is only one file and that is the Coordinates.swift
+
+
+
