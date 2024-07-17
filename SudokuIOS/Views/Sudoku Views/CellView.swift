@@ -39,6 +39,9 @@ struct CellView: View {
                             )
                     }
                 }
+                .alert(Text("The number can't be placed there."), isPresented: $sudokuManager.errorAlertPresent) {
+                    MistakesAlertActions()
+                }
         }
     }
 }
