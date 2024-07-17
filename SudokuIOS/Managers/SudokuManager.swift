@@ -168,10 +168,10 @@ class SudokuManager: ObservableObject {
     /// Method that will end the game.
     func endGame() {
         clearNumbers()
-        gameStarted = false
         selectedNumber = nil
         mistakesCount = 3
         remainingCellsCount = 0
+        gameStarted = false
     }
     
     /// Method that will be called when a new number is selected.
