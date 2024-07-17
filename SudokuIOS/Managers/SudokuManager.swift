@@ -55,6 +55,7 @@ class SudokuManager: ObservableObject {
         self.gameStarted = false
         self.selectedNumber = nil
         self.mistakesCount = 0
+        self.remainingCellsCount = 0
         self.errorAlertPresent = false
     }
     
@@ -139,6 +140,7 @@ class SudokuManager: ObservableObject {
             if numbers[coordinates.row][coordinates.col].value != nil {
                 numbers[coordinates.row][coordinates.col].value = nil
                 numbers[coordinates.row][coordinates.col].isGenerated = false
+                remainingCellsCount += 1
                 count -= 1
             }
         }
@@ -161,7 +163,6 @@ class SudokuManager: ObservableObject {
         _ = solve()
         removeNumbers()
         gameStarted = true
-        mistakesCount = 3
     }
     
     /// Method that will end the game.
@@ -169,6 +170,8 @@ class SudokuManager: ObservableObject {
         clearNumbers()
         gameStarted = false
         selectedNumber = nil
+        mistakesCount = 3
+        remainingCellsCount = 0
     }
     
     /// Method that will be called when a new number is selected.
