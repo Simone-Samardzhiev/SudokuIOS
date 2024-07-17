@@ -43,7 +43,7 @@ class SudokuManager: ObservableObject {
     @Published var selectedNumber: Int?
     /// Variable keeping the count of the mistakes.
     @Published var mistakesCount: Int
-    /// Variable keeping the remaing cells that need to filed.
+    /// Variable keeping the remaining cells that need to filed.
     @Published var remainingCellsCount: Int
     /// Bool variable representing if an alert for wring number should be presented.
     @Published var errorAlertPresent: Bool
